@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>0a5cbb46-0f82-45d0-b954-ff3b162c6564</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\3.Application\GithubIntegration.AppService\GithubIntegration.AppService.csproj" />
+    <ProjectReference Include="..\..\5.Infra\CrossCutting\GithubIntegration.Infra.CrossCutting.IoC\GithubIntegration.Infra.CrossCutting.IoC.csproj" />
+  </ItemGroup>
+
+
+</Project>

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Description>Persistence Layer</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GithubIntegration.Infra.Data.Contract\GithubIntegration.Infra.Data.Contract.csproj" />
+  </ItemGroup>
+
+</Project>
