@@ -1,0 +1,35 @@
+﻿@model IEnumerable<GithubIntegration.AppService.Contract.Request.RepositoryRequest>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nameRepository)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.loginOwner)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nameRepository)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.loginOwner)
+            </td>
+            <td>
+
+            </td>
+            <td>
+                @Html.ActionLink("Favorito", "Favorito", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { loginOwner = item.loginOwner, nameRepository = item.nameRepository }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

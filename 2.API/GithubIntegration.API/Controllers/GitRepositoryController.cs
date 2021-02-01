@@ -1,5 +1,6 @@
 ﻿using GithubIntegration.AppService.Contract.Interface;
 using GithubIntegration.AppService.Contract.Request;
+using GithubIntegration.AppService.Contract.ViewModel;
 using GithubIntegration.Infra.CrossCutting.Helper;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -111,22 +112,60 @@ namespace GithubIntegration.API.Controllers
             }
         }
 
+        // GET api/<GitRepositoryController>/5
+        [HttpGet("GetFavoriteRepositories")]
+        public async Task<IActionResult> GetFavoriteRepositories()
+        {
+            try
+            {
+                var result = await _service.GetFavoriteRepositories().ConfigureAwait(false);
+                if (!result.IsNull())
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    return NotFound(new { });
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
         // POST api/<GitRepositoryController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post([FromBody] FavoriteRepositoryVM favoriteVM)
         {
+            try
+            {
+                var result = await _service.Add(favoriteVM).ConfigureAwait(false);
+                if (result)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    return BadRequest("Impossível salvar arquivo");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // PUT api/<GitRepositoryController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
 
-        // DELETE api/<GitRepositoryController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        //// DELETE api/<GitRepositoryController>/5
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
     }
 }

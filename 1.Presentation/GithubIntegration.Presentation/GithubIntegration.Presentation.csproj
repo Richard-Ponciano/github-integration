@@ -11,6 +11,13 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.10" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\3.Application\GithubIntegration.AppService.Contract\GithubIntegration.AppService.Contract.csproj" />
+    <ProjectReference Include="..\..\3.Application\GithubIntegration.AppService\GithubIntegration.AppService.csproj" />
+    <ProjectReference Include="..\..\5.Infra\CrossCutting\GithubIntegration.Infra.CrossCutting.Helper\GithubIntegration.Infra.CrossCutting.Helper.csproj" />
   </ItemGroup>
 
 </Project>
